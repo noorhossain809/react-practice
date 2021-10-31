@@ -1,0 +1,4 @@
+.main_info{
+    display: grid;
+    grid-template-columns: repeat(1fr, 3);
+}

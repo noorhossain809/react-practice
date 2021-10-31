@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Country from './components/Country/Country'
+import DrawerPage from "./components/DrawerPage/DrawerPage";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import UserDetails from "./components/UserDetails/UserDetails";
+import TransitionMui from "./components/TransitionMui/TransitionMui";
+import MealData from "./components/MealData/MealData";
+import FindMeal from "./components/FindMeal/FindMeal";
+import LoginPage from "./components/LoginPage/LoginPage";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+      <DrawerPage></DrawerPage>
+      <MealData></MealData>
+      <FindMeal></FindMeal>
+      <TransitionMui />
+      
+      <Switch>
+      <Route exact path="/user">
+             <Country></Country>
+        </Route>
+        <Route path="/users/:id">
+          <UserDetails></UserDetails>
+        </Route>
+        <Route path="/login">
+          <LoginPage></LoginPage>
+        </Route>
+      </Switch>
+      </Router>
+      
+         
     </div>
   );
 }
